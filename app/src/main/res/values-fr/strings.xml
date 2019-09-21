@@ -9,4 +9,9 @@
     <string name="what_does_this_do">Qu\'est-ce que cela fait?</string>
     <string name='radio_button'>Bouton radio</string>
     <string name="check_box">Case à cocher</string>
+    <string name="dialog_message">Voulez-vous terminer l\'activité?</string>
+    <string name="dialog_title">Terminer lactivité</string>
+    <string name ="ok">D\'accord</string>
+    <string name ="cancel">Annuler</string>
+    <string name ="my_information">Mes informations à partager</string>
 </resources>
