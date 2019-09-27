@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.i(ACTIVITY_NAME, "In onCreate ");
         final SharedPreferences sharedPref = getSharedPreferences("DefaultEmail",Context.MODE_PRIVATE);
         String email = sharedPref.getString("DefaultEmail","email@domain.com");
         final EditText email_field = (EditText) findViewById(R.id.editText);
