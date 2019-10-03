@@ -14,4 +14,6 @@
     <string name ="ok">D\'accord</string>
     <string name ="cancel">Annuler</string>
     <string name ="my_information">Mes informations à partager</string>
+    <string name="startchat">Démarrer la discussion</string>
+    <string name ="send">Envoyer</string>
 </resources>

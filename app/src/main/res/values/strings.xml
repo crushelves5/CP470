@@ -10,7 +10,9 @@
     <string name="check_box">Check Box</string>
     <string name="dialog_message">Do you want to finish the activity?</string>
     <string name="dialog_title">Finish The Activity</string>
-    <string name ="ok">Ok</string>
-    <string name ="cancel">Cancel</string>
-    <string name ="my_information"> My information to share</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="my_information"> My information to share</string>
+    <string name="startchat">Start Chat</string>
+    <string name="send">Send</string>
 </resources>
