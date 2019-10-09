@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bread"
+        app:showAsAction="always"
+        android:icon="@drawable/icons8_bread_24"
+        android:orderInCategory="0"
+        android:title="Bread" />
+    <item android:id="@+id/cheese"
+        android:title="Cheese"
+        android:icon="@drawable/icons8_cheese_24"
+        android:orderInCategory="1"
+        app:showAsAction="always" />
+    <item android:id="@+id/grapes"
+        android:title="Grapes"
+        android:icon="@drawable/icons8_grapes_24"
+        android:orderInCategory="2"
+        app:showAsAction="always" />
+    <item android:id="@+id/about"
+        android:title="About"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+
+</menu>

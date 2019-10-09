@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onCreate ");
         Button button = (Button) findViewById(R.id.button);
         Button startChat = (Button) findViewById(R.id.button3);
+        Button startToolbar = findViewById(R.id.button5);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i(ACTIVITY_NAME, "User clicked Start Chat");
                 Intent intent = new Intent(MainActivity.this, ChatWindow.class);
+                startActivity(intent);
+            }
+        });
+        startToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TestToolbar.class);
                 startActivity(intent);
             }
         });
