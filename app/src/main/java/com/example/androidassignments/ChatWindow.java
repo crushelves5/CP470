@@ -2,7 +2,10 @@ package com.example.androidassignments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,14 +21,30 @@ import java.util.ArrayList;
 
 public class ChatWindow extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "ChatWindow";
+    static final String GET_MESSAGES = "SELECT KEY_MESSAGE FROM MESSAGES";
     ArrayList<String> messages = new ArrayList<>();
+    static SQLiteDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
         Log.i(ACTIVITY_NAME, "In onCreate ");
+        //Getting the messages from the database
+        ChatDatabaseHelper dbHelper = new ChatDatabaseHelper(this);
+        database = dbHelper.getWritableDatabase();
+        final Cursor cursor = database.rawQuery(GET_MESSAGES,null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + cursor.getString( cursor.getColumnIndex( ChatDatabaseHelper.KEY_MESSAGE) ) );
+            messages.add(cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE)));
+            cursor.moveToNext();
+        }
+        Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + cursor.getColumnCount() );
+        for (int i = 0; i <cursor.getColumnCount();i++){
+            Log.i(ACTIVITY_NAME, "Column Name: "+ cursor.getColumnName(i));
+        }
 
-        ListView chatView =  findViewById(R.id.chatView);
+        final ListView chatView =  findViewById(R.id.chatView);
         Button send = findViewById(R.id.button4);
         final EditText textField = findViewById(R.id.editText3);
         final ChatAdapter messageAdapter = new ChatAdapter(this);
@@ -33,7 +52,11 @@ public class ChatWindow extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                messages.add(textField.getText().toString());
+                String text = textField.getText().toString();
+                messages.add(text);
+                ContentValues cValues = new ContentValues();
+                cValues.put(ChatDatabaseHelper.KEY_MESSAGE, text);
+                database.insert(ChatDatabaseHelper.TABLE_NAME,"NullPlaceHolder",cValues);
                 messageAdapter.notifyDataSetChanged();
                 textField.setText("");
             }
@@ -96,6 +119,7 @@ public class ChatWindow extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        database.close();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
 
@@ -104,4 +128,6 @@ public class ChatWindow extends AppCompatActivity {
         super.onStop();
         Log.i(ACTIVITY_NAME, "In onStop()");
     }
+
+
 }
