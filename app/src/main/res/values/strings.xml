@@ -20,4 +20,5 @@
     <string name="snackbar_message">Select A snack from the menu</string>
     <string name="go_back">Do you want to go back?</string>
     <string name="new_message">New Message</string>
+    <string name="weather_forecast">Weather Forecast</string>
 </resources>
