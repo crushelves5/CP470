@@ -22,4 +22,5 @@
     <string name="go_back">Veux-tu y retourner?</string>
     <string name="new_message">Nouveau message</string>
     <string name="weather_forecast">Weather Forecast</string>
+    <string name="delete_message">Supprimer ce Message</string>
 </resources>
